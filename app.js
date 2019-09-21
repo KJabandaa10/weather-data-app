@@ -12,6 +12,8 @@ async function getWeather() {
   console.log(weatherData.name);
   // get main weather info
   let mainArr = [main.humidity, main.temp, main.temp_max, main.temp_min];
+  // store weather request in localStorage
+  localStorage.setItem("weather request", JSON.stringify(mainArr));
 
   // display main info on page
   const humidity = document.createElement("p");
