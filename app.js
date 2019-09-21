@@ -1,8 +1,10 @@
 const button = document.querySelector("button");
+let input = document.querySelector("input").value;
+// let input = 'london' works!
 
 async function getWeather() {
   let response = await fetch(
-    "http://api.openweathermap.org/data/2.5/weather?q=nottingham&APPID=1d4cd589716fb70b2c7958b584c58a01&units=metric"
+    `http://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=1d4cd589716fb70b2c7958b584c58a01&units=metric`
   );
   const weatherData = await response.json();
   console.log(weatherData);
@@ -12,7 +14,7 @@ async function getWeather() {
   console.log(weatherData.name);
   // get main weather info
   let mainArr = [main.humidity, main.temp, main.temp_max, main.temp_min];
-  // store weather request in localStorage
+  // store weather request in LocalStorage
   localStorage.setItem("weather request", JSON.stringify(mainArr));
 
   // display main info on page
@@ -32,4 +34,4 @@ async function getWeather() {
 
 button.addEventListener("click", getWeather, { once: true });
 // for tests
-// getWeather();
+getWeather();
