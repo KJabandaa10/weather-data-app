@@ -17,4 +17,8 @@ body {
 .container h1 {
   font-size: 46px;
 }
+
+input {
+  text-transform: capitalize;
+}
 /*# sourceMappingURL=styles.css.map */
