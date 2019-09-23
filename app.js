@@ -1,5 +1,5 @@
 const button = document.querySelector("button");
-
+const input = document.getElementById("input");
 async function getWeather() {
   let input = document.querySelector("input").value;
   let response = await fetch(
@@ -36,5 +36,12 @@ async function getWeather() {
 }
 
 button.addEventListener("click", getWeather);
+
+input.onkeydown = function(e) {
+  if (e.keyCode == 13) {
+    getWeather();
+  }
+};
+
 // for tests
 getWeather();
