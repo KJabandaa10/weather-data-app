@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// vars
+$colors: (
+  primary: rgba(136, 183, 255, 0.774)
+);
+// functions
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+// styles
+body {
+  background-color: color(primary);
+  font-family: "Open Sans", sans-serif;
+}
+.container {
+  text-align: center;
+  h1 {
+    font-size: 46px;
+  }
+}
