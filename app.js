@@ -10,37 +10,43 @@ async function getWeather() {
   const weatherData = await response.json();
   // access main json object
   const main = weatherData.main;
+  console.log(main);
   // get main weather info
-  let mainArr = [main.humidity, main.temp, main.temp_max, main.temp_min];
+  let mains = {
+    humidity: main.humidity,
+    temp: main.temp,
+    maxTemp: main.temp_max,
+    minTemp: main.temp_min
+  };
   // store weather request in LocalStorage
-  localStorage.setItem("weather request", JSON.stringify(mainArr));
+  localStorage.setItem("weather request", JSON.stringify(mains));
 
   // display main info on page
   const cityName = document.createElement("p");
   cityName.setAttribute("id", "result");
   cityName.textContent = `The weather for ${input}`;
-  document.getElementById("data-div").appendChild(cityName);
+  document.getElementById("data-header").appendChild(cityName);
   cityName.style.fontSize = "24px";
+  // weather data inside main object
   const humidity = document.createElement("p");
   humidity.setAttribute("id", "result");
-  humidity.textContent = `Humidity: ${mainArr[0]}`;
+  humidity.textContent = `Humidity: ${mains.humidity}`;
   document.getElementById("data-div").appendChild(humidity);
   const temp = document.createElement("p");
   temp.setAttribute("id", "result");
-  temp.textContent = `Temperature: ${mainArr[1]}°`;
+  temp.textContent = `Temperature: ${mains.temp}°`;
   document.getElementById("data-div").appendChild(temp);
   const maxTemp = document.createElement("p");
   maxTemp.setAttribute("id", "result");
-  maxTemp.textContent = `Maximum temperature: ${mainArr[2]}°`;
+  maxTemp.textContent = `Maximum temperature: ${mains.maxTemp}°`;
   document.getElementById("data-div").appendChild(maxTemp);
   const minTemp = document.createElement("p");
   minTemp.setAttribute("id", "result");
-  minTemp.textContent = `Minimum temperature: ${mainArr[3]}°`;
+  minTemp.textContent = `Minimum temperature: ${mains.minTemp}°`;
   document.getElementById("data-div").appendChild(minTemp);
 }
 
 function clearSearches() {
-  let removeArr = [];
   document.querySelectorAll("#result").forEach(result => {
     result.remove();
   });
