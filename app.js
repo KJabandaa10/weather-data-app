@@ -10,7 +10,6 @@ async function getWeather() {
   const weatherData = await response.json();
   // access main json object
   const main = weatherData.main;
-  console.log(main);
   // get main weather info
   let mains = {
     humidity: main.humidity,
