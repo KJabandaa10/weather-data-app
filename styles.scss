@@ -6,23 +6,57 @@
 
 // vars
 $colors: (
-  primary: rgba(136, 183, 255, 0.774)
+  primary: rgba(255, 255, 255, 0.863)
 );
 // functions
 @function color($color-name) {
   @return map-get($colors, $color-name);
 }
+@mixin border($thickness) {
+  border: $thickness solid rgb(192, 192, 192);
+}
+@mixin borderRads($rad) {
+  border-radius: $rad;
+}
 // styles
 body {
   background-color: color(primary);
-  font-family: "Open Sans", sans-serif;
+  font-family: Helvetica, "Open Sans", sans-serif;
 }
 .container {
   text-align: center;
   h1 {
-    font-size: 46px;
+    font-size: 40px;
+    font-weight: 100;
+    margin-top: 1em;
   }
-}
-input {
-  text-transform: capitalize;
+
+  .button {
+    padding: 0.3em;
+    color: rgb(158, 158, 158);
+    background-color: white;
+  }
+
+  .ui-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0.5em;
+    margin: 2em 30vw;
+
+    .all {
+      @include border(1px);
+      @include borderRads(15px);
+      padding: 0.3em;
+      font-size: 16px;
+    }
+
+    input {
+      grid-column: 1/3;
+      text-indent: 10px;
+    }
+    .clearbtn {
+      grid-column: 3;
+    }
+  }
 }
