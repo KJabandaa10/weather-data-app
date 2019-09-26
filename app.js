@@ -22,40 +22,37 @@ async function getWeather() {
 
   // display main info on page
   const cityName = document.createElement("p");
-  cityName.setAttribute("id", "result");
-  cityName.textContent = `The weather for ${input}`;
+  cityName.textContent = `The weather for ${input} 🌦`;
   cityName.id = "data-header";
+  cityName.className = "result";
   document.getElementById("data-div").appendChild(cityName);
   cityName.style.fontSize = "24px";
   // weather data inside main object
   const humidity = document.createElement("p");
-  humidity.setAttribute("id", "result");
   humidity.textContent = `Humidity: ${mains.humidity}`;
   humidity.id = "data-item";
-  humidity.className = "data-humidity";
+  humidity.className = "data-humidity result";
   document.getElementById("data-div").appendChild(humidity);
   const temp = document.createElement("p");
-  temp.setAttribute("id", "result");
   temp.textContent = `Temperature: ${mains.temp}°`;
   temp.id = "data-item";
-  temp.className = "data-temp";
+  temp.className = "data-temp result";
   document.getElementById("data-div").appendChild(temp);
   const maxTemp = document.createElement("p");
-  maxTemp.setAttribute("id", "result");
+  // maxTemp.setAttribute("id", "result");
   maxTemp.textContent = `Maximum temperature: ${mains.maxTemp}°`;
   maxTemp.id = "data-item";
-  maxTemp.className = "data-maxTemp";
+  maxTemp.className = "data-maxTemp result";
   document.getElementById("data-div").appendChild(maxTemp);
   const minTemp = document.createElement("p");
-  minTemp.setAttribute("id", "result");
   minTemp.textContent = `Minimum temperature: ${mains.minTemp}°`;
   minTemp.id = "data-item";
-  minTemp.className = "data-minTemp";
+  minTemp.className = "data-minTemp result";
   document.getElementById("data-div").appendChild(minTemp);
 }
 
 function clearSearches() {
-  document.querySelectorAll("#result").forEach(result => {
+  document.querySelectorAll(".result").forEach(result => {
     result.remove();
   });
 }
