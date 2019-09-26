@@ -24,24 +24,33 @@ async function getWeather() {
   const cityName = document.createElement("p");
   cityName.setAttribute("id", "result");
   cityName.textContent = `The weather for ${input}`;
-  document.getElementById("data-header").appendChild(cityName);
+  cityName.id = "data-header";
+  document.getElementById("data-div").appendChild(cityName);
   cityName.style.fontSize = "24px";
   // weather data inside main object
   const humidity = document.createElement("p");
   humidity.setAttribute("id", "result");
   humidity.textContent = `Humidity: ${mains.humidity}`;
+  humidity.id = "data-item";
+  humidity.className = "data-humidity";
   document.getElementById("data-div").appendChild(humidity);
   const temp = document.createElement("p");
   temp.setAttribute("id", "result");
   temp.textContent = `Temperature: ${mains.temp}°`;
+  temp.id = "data-item";
+  temp.className = "data-temp";
   document.getElementById("data-div").appendChild(temp);
   const maxTemp = document.createElement("p");
   maxTemp.setAttribute("id", "result");
   maxTemp.textContent = `Maximum temperature: ${mains.maxTemp}°`;
+  maxTemp.id = "data-item";
+  maxTemp.className = "data-maxTemp";
   document.getElementById("data-div").appendChild(maxTemp);
   const minTemp = document.createElement("p");
   minTemp.setAttribute("id", "result");
   minTemp.textContent = `Minimum temperature: ${mains.minTemp}°`;
+  minTemp.id = "data-item";
+  minTemp.className = "data-minTemp";
   document.getElementById("data-div").appendChild(minTemp);
 }
 
