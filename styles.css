@@ -22,7 +22,7 @@ body {
 
 .container .button {
   padding: 0.3em;
-  color: #9e9e9e;
+  color: #7e7e7e;
   background-color: white;
 }
 
@@ -38,7 +38,7 @@ body {
 }
 
 .container .ui-grid .all {
-  border: 1px solid silver;
+  border: 1px solid #7e7e7e;
   border-radius: 15px;
   padding: 0.3em;
   font-size: 16px;
@@ -54,5 +54,39 @@ body {
 .container .ui-grid .clearbtn {
   -ms-grid-column: 3;
   grid-column: 3;
+}
+
+.container .data-div-parent {
+  margin: 0 30vw;
+}
+
+.container .data-div-parent #data-div {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 300px;
+}
+
+.container .data-div-parent #data-div p {
+  text-align: center;
+}
+
+.container .data-div-parent #data-div .result {
+  padding: 0.5em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 /*# sourceMappingURL=styles.css.map */

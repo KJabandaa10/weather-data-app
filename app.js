@@ -1,9 +1,16 @@
 const button = document.querySelector(".button");
 const input = document.getElementById("input");
 const clearButton = document.querySelector(".clear");
+const dataDivParent = document.querySelector(".data-div-parent");
+
+let hasData = false;
 
 async function getWeather() {
+  hasData = true;
+  hideBorder();
+
   let input = document.querySelector("input").value;
+  input.className = "data-right";
   let response = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${input}&APPID=1d4cd589716fb70b2c7958b584c58a01&units=metric`
   );
@@ -29,32 +36,40 @@ async function getWeather() {
   cityName.style.fontSize = "24px";
   // weather data inside main object
   const humidity = document.createElement("p");
-  humidity.textContent = `Humidity: ${mains.humidity}`;
-  humidity.id = "data-item";
+  humidity.innerHTML = `💧 Humidity: <span>${mains.humidity}</span>`;
   humidity.className = "data-humidity result";
   document.getElementById("data-div").appendChild(humidity);
   const temp = document.createElement("p");
-  temp.textContent = `Temperature: ${mains.temp}°`;
-  temp.id = "data-item";
+  temp.innerHTML = `🔆 Temperature: <span>${mains.temp}°</span>`;
   temp.className = "data-temp result";
   document.getElementById("data-div").appendChild(temp);
   const maxTemp = document.createElement("p");
   // maxTemp.setAttribute("id", "result");
-  maxTemp.textContent = `Maximum temperature: ${mains.maxTemp}°`;
-  maxTemp.id = "data-item";
+  maxTemp.innerHTML = `🔥 Maximum: <span>${mains.maxTemp}°</span>`;
   maxTemp.className = "data-maxTemp result";
   document.getElementById("data-div").appendChild(maxTemp);
   const minTemp = document.createElement("p");
-  minTemp.textContent = `Minimum temperature: ${mains.minTemp}°`;
-  minTemp.id = "data-item";
+  minTemp.innerHTML = `❄️ Minimum: <span>${mains.minTemp}°</span>`;
   minTemp.className = "data-minTemp result";
   document.getElementById("data-div").appendChild(minTemp);
 }
 
 function clearSearches() {
+  hasData = false;
+  hideBorder();
   document.querySelectorAll(".result").forEach(result => {
     result.remove();
   });
+}
+
+// hide border if no search results
+function hideBorder() {
+  if (!hasData) {
+    dataDivParent.style.border = "none";
+  } else {
+    dataDivParent.style.border = "1px solid rgb(126, 126, 126)";
+    dataDivParent.style.borderRadius = "15px";
+  }
 }
 
 button.addEventListener("click", getWeather);
@@ -63,4 +78,5 @@ input.onkeydown = function(e) {
     getWeather();
   }
 };
+
 clearButton.addEventListener("click", clearSearches);
